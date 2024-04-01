@@ -1,12 +1,12 @@
 {
-  "name": "whatsapp-bot (GSS BOTWA V2.0)",
-  "description": "Whatsapp bot.",
-  "keywords": ["whatsapp bot"],
-  "repository": "https://github.com/gssbotwa/Gssbotwa2",
+  "name": "whatsapp-bot (XENO-MD V2.0)",
+  "description": "XENO MD",
+  "keywords": ["DEPLOY ENJOY"],
+  "repository": "https://github.com/X-E-N-OS-IR/XENO-MD V2",
   "stack": "container",
   "env": {
     "AUTO_READ": {
-      "description": "Enable auto read feature",
+      "description": "Enable more features",
       "required": false,
       "value": ""
     },
