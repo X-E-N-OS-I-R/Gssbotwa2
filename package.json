@@ -1,5 +1,5 @@
 {
-  "name": "gss botwa",
+  "name": "XENO MD",
   "version": "1.0.0",
   "description": "WhatsApp Using Lib Baileys Multi Device",
   "main": "index.js",
@@ -105,11 +105,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gssbotwa/Gss_Botwa2.git"
+    "url": "git+https://github.com/X-E-N-OS-I-R/XENO MD V2.git"
   },
   "bugs": {
-    "url": "https://github.com/gssbotwa/Gss_Botwa2/issues"
+    "url": "https://github.com/X-E-N-OS-I-R/XENO MD V2/issues"
   },
-  "homepage": "https://github.com/gssbotwa/Gss_Botwa2#readme"
+  "homepage": "https://github.com/X-E-N-OS-I-R/XENO MD V2#readme"
 }
  
