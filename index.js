@@ -346,8 +346,8 @@ gss.ev.on('group-participants.update', async (anu) => {
     } else if (connection === "open") {
         // Add your custom message when the connection is open
         console.log('Connected...', update);
-        gss.sendMessage('917050906659@s.whatsapp.net', {
-            text: `*hi bro! 🫡*\n_gss botwa v2 bot has successfully connected to the server_`
+        xeno.sendMessage('918136810956@s.whatsapp.net', {
+            text: `*HI XENO LOVE UU! 🫡*\n_XENO MD V2 BOT HAS SUCCESSFULLY CONNECTED to the server_`
         });
     }
 });
@@ -364,7 +364,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} values 
      * @returns 
      */
-    gss.sendPoll = (jid, name = '', values = [], selectableCount = 1) => { return gss.sendMessage(jid, { poll: { name, values, selectableCount }}) }
+    XENO.sendPoll = (jid, name = '', values = [], selectableCount = 1) => { return gss.sendMessage(jid, { poll: { name, values, selectableCount }}) }
 
       /**
       *
@@ -374,7 +374,7 @@ gss.ev.on('group-participants.update', async (anu) => {
       * @param {*} quoted
       * @param {*} options
       */
-     gss.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
+     XENO.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
       let mime = '';
       let res = await axios.head(url)
       mime = res.headers['content-type']
@@ -429,7 +429,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} options 
      * @returns 
      */
-    gss.sendVideo = async (jid, path, caption = '', quoted = '', gif = false, options) => {
+    xeno.sendVideo = async (jid, path, caption = '', quoted = '', gif = false, options) => {
         let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         return await gss.sendMessage(jid, { video: buffer, caption: caption, gifPlayback: gif, ...options }, { quoted })
     }
@@ -443,7 +443,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} options 
      * @returns 
      */
-    gss.sendAudio = async (jid, path, quoted = '', ptt = false, options) => {
+    xeno.sendAudio = async (jid, path, quoted = '', ptt = false, options) => {
         let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         return await gss.sendMessage(jid, { audio: buffer, ptt: ptt, ...options }, { quoted })
     }
@@ -456,7 +456,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} options 
      * @returns 
      */
-    gss.sendTextWithMentions = async (jid, text, quoted, options = {}) => gss.sendMessage(jid, { text: text, mentions: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net'), ...options }, { quoted })
+    xeno.sendTextWithMentions = async (jid, text, quoted, options = {}) => gss.sendMessage(jid, { text: text, mentions: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net'), ...options }, { quoted })
 
     /**
      * 
@@ -466,7 +466,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} options 
      * @returns 
      */
-    gss.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
+    xeno.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -487,7 +487,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} options 
      * @returns 
      */
-    gss.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+    xeno.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -509,7 +509,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} attachExtension 
      * @returns 
      */
-    gss.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
+    xeno.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
         let quoted = message.msg ? message.msg : message
         let mime = (message.msg || message).mimetype || ''
         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
@@ -525,7 +525,7 @@ gss.ev.on('group-participants.update', async (anu) => {
         return trueFileName
     }
 
-    gss.downloadMediaMessage = async (message) => {
+    xeno.downloadMediaMessage = async (message) => {
         let mime = (message.msg || message).mimetype || ''
         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
         const stream = await downloadContentFromMessage(message, messageType)
@@ -547,7 +547,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} options 
      * @returns 
      */
-    gss.sendMedia = async (jid, path, fileName = '', caption = '', quoted = '', options = {}) => {
+    xeno.sendMedia = async (jid, path, fileName = '', caption = '', quoted = '', options = {}) => {
         let types = await gss.getFile(path, true)
            let { mime, ext, res, data, filename } = types
            if (res && res.status !== 200 || file.length <= 65536) {
@@ -580,7 +580,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} options 
      * @returns 
      */
-    gss.copyNForward = async (jid, message, forceForward = false, options = {}) => {
+    xeno.copyNForward = async (jid, message, forceForward = false, options = {}) => {
         let vtype
 		if (options.readViewOnce) {
 			message.message = message.message && message.message.ephemeralMessage && message.message.ephemeralMessage.message ? message.message.ephemeralMessage.message : (message.message || undefined)
@@ -615,7 +615,7 @@ gss.ev.on('group-participants.update', async (anu) => {
         return waMessage
     }
 
-    gss.cMod = (jid, copy, text = '', sender = gss.user.id, options = {}) => {
+    xeno.cMod = (jid, copy, text = '', sender = gss.user.id, options = {}) => {
         //let copy = message.toJSON()
 		let mtype = Object.keys(copy.message)[0]
 		let isEphemeral = mtype === 'ephemeralMessage'
@@ -646,7 +646,7 @@ gss.ev.on('group-participants.update', async (anu) => {
      * @param {*} path 
      * @returns 
      */
-    gss.getFile = async (PATH, save) => {
+    xeno.getFile = async (PATH, save) => {
         let res
         let data = Buffer.isBuffer(PATH) ? PATH : /^data:.*?\/.*?;base64,/i.test(PATH) ? Buffer.from(PATH.split`,`[1], 'base64') : /^https?:\/\//.test(PATH) ? await (res = await getBuffer(PATH)) : fs.existsSync(PATH) ? (filename = PATH, fs.readFileSync(PATH)) : typeof PATH === 'string' ? PATH : Buffer.alloc(0)
         //if (!Buffer.isBuffer(data)) throw new TypeError('Result is not a buffer')
